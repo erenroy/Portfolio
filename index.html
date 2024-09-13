@@ -1,880 +1,323 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Freelancer - Develop best websites and webapps</title>
-    <link rel="stylesheet" href="styles/styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="icon" type="image/x-icon" href="img/favicon-image.png">
+    <title>Responsive Personal Potfolio</title>
 
+    <link rel="stylesheet" href="style.css">
+
+    <!-- box icons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
-<style>
-    /* Typing Element  */
-    .typing-container {
-    display: flex;
-    align-items: center;
-    font-size: 45px;
-    font-weight: bold;
-}
 
-.cursor {
-    margin-left: 2px;
-    animation: blink 0.7s infinite;
-}
+<body>
 
-@keyframes blink {
-    0%, 100% {
-        opacity: 1;
-    }
-    50% {
-        opacity: 0;
-    }
-}
+    <!-- header design -->
+    <header class="header">
+        <a href="#" class="logo">Portfolio.<span class="animate" style="--i:1;"></span></a>
 
+        <div class="bx bx-menu" id="menu-icon"><span class="animate" style="--i:2;"></span></div>
 
-/* Making the pop up  */
-        /* Overlay styling */
-        .popup-overlay {
-            display: none; /* Initially hidden */
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            z-index: 1000;
-            opacity: 0;
-            transition: opacity 0.4s ease-in-out;
-            align-items: center;
-            justify-content: center;
-        }
+        <nav class="navbar">
+            <a href="#home" class="active">Home</a>
+            <a href="#about">About</a>
+            <a href="#education">Education</a>
+            <a href="#skills">Skills</a>
+            <a href="#contact">Contact</a>
 
-        .popup-overlay.show {
-            display: flex;
-            opacity: 1;
-        }
-
-        /* Popup box styling */
-        .popup-box {
-            position: relative;
-            width: 60%;
-            max-width: 800px;
-            background: #fff;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            transform: scale(0.7);
-            opacity: 0;
-            transition: transform 0.6s cubic-bezier(0.25, 0.1, 0.25, 1), opacity 0.6s ease;
-        }
-
-        .popup-overlay.show .popup-box {
-            transform: scale(1);
-            opacity: 1;
-        }
-
-        /* Close button styling */
-        .popup-close {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            font-size: 24px;
-            color: #ffffff;
-            cursor: pointer;
-            transition: color 0.3s ease;
-        }
-
-        .popup-close:hover {
-            color: #e74c3c;
-        }
-
-        /* Popup content styling */
-        .popup-box h2 {
-            margin-top: 0;
-            font-size: 24px;
-            color: #fffcfc;
-            text-align: center;
-        }
-
-        .popup-box p {
-            font-size: 16px;
-            line-height: 1.5;
-            color: #ffffff;
-            text-align: center;
-        }
-
-        .popup-box ul {
-            list-style: none;
-            padding: 0;
-            margin: 20px 0 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .popup-box li {
-            margin: 10px 0;
-        }
-
-        .popup-box a {
-            color: #3498db;
-            text-decoration: none;
-            font-weight: bold;
-            transition: color 0.3s ease;
-        }
-
-        .popup-box a:hover {
-            color: #2980b9;
-        }
-
-
-        /* Popup Box Styling */
-.popup-box {
-    position: relative;
-    width: 60%;
-    max-width: 800px;
-    background: #fff;
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    transform: scale(0.7);
-    opacity: 0;
-    transition: transform 0.6s cubic-bezier(0.25, 0.1, 0.25, 1), opacity 0.6s ease;
-}
-
-.popup-overlay.show .popup-box {
-    transform: scale(1);
-    opacity: 1;
-}
-
-/* Close Button Styling */
-.popup-close {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    font-size: 24px;
-    color: #ffffff;
-    cursor: pointer;
-    transition: color 0.3s ease;
-}
-
-.popup-close:hover {
-    color: #e74c3c;
-}
-
-/* Popup Content Styling */
-.popup-box h2 {
-    margin-top: 0;
-    font-size: 24px;
-    color: #ffffff;
-    text-align: center;
-}
-
-.popup-box p {
-    font-size: 16px;
-    line-height: 1.5;
-    color: #ffffff;
-    text-align: center;
-}
-
-.popup-box ul {
-    list-style: none;
-    padding: 0;
-    margin: 20px 0 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.popup-box li {
-    margin: 10px 0;
-    font-size: 16px;
-}
-
-.popup-box a {
-    color: #3498db;
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.popup-box a:hover {
-    color: #2980b9;
-}
-
-/* Budget Styling */
-.budget {
-    font-weight: bold;
-    padding-left: 5px;
-    color: var(--budget-color, #333);
-}
-
-.popup-overlay.show .popup-box {
-    transform: scale(1);
-    opacity: 1;
-    background-color:  #191d2b;
-}
-</style>
-<body class="main-content">
-        <!-- Popup Overlay -->
-        <div class="popup-overlay" id="popupOverlay">
-            <div class="popup-box">
-                <span class="popup-close" id="popupClose"><i class="fas fa-times"></i></span>
-                <h2>Visit My Recent Completed Freelance Works</h2>
-                <p>Check out my latest work and projects. Click the links below to explore:</p>
-                <ul>
-                    <li><a href="https://millionleads.online/" target="_blank">SAAS - MillionLeads (A lead generation site which allows to scrape leads from online) <span class="budget" style="--budget-color: #27ae60;">Project budget - $250  Country - United States </span></a></li>
-                    <li><a href="https://gardenly.me/" target="_blank">Business Site - Gardenly (A modern service for redesigning gardens) <span class="budget" style="--budget-color: #27ae60;">Project Budget - $300   Country - Isreal</span></a></li>
-                    <li><a href="https://ztechblog.online/" target="_blank">Blogging Site - Ztechblogs (A blogging site for a video editor) <span class="budget" style="--budget-color:#27ae60;">Budget - $150 Country - India</span></a></li>
-                </ul>
-
-                <div class="contact-icons" style="display: flex; justify-content: center; align-items: center; margin-top: 20px;">
-                    <div class="contact-icon" style="display: flex;">
-                        <a href="https://www.facebook.com/profile.php?id=61559166032397" target="_blank" style="display: flex; justify-content: center; align-items: center; width: 50px; height: 50px; margin: 0 10px; background-color: #f0f0f0; border-radius: 50%; color: #333; font-size: 20px; transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="https://x.com/i/flow/login?redirect_after_login=%2Feren2024m" target="_blank" style="display: flex; justify-content: center; align-items: center; width: 50px; height: 50px; margin: 0 10px; background-color: #f0f0f0; border-radius: 50%; color: #333; font-size: 20px; transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="https://github.com/erenroy" target="_blank" style="display: flex; justify-content: center; align-items: center; width: 50px; height: 50px; margin: 0 10px; background-color: #f0f0f0; border-radius: 50%; color: #333; font-size: 20px; transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="https://www.instagram.com/devroy_2024/?igsh=YmhoeHJ0MW9vajh2" target="_blank" style="display: flex; justify-content: center; align-items: center; width: 50px; height: 50px; margin: 0 10px; background-color: #f0f0f0; border-radius: 50%; color: #333; font-size: 20px; transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                
-            </div>
-            
-        </div>
-    <header class="container header active" id="home">
-        <div class="header-content">
-            <div class="left-header">
-                <div class="h-shape"></div>
-                <div class="image">
-                    <img src="img/mypic.png" alt="">
-                </div>
-            </div>
-            <div class="right-header">
-                <h1 class="name">
-                    Hi, I'm <span>Roy</span>
-                    <div class="typing-container">
-                        <span id="typing-text"></span>
-                        <span class="cursor">|</span>
-                    </div>
-                </h1>
-                <p>
-                    I’m an experienced freelance web developer with two years of expertise in building top-quality web apps. As a 5-star Fiverr freelancer, I deliver excellent results. Contact me for all your web development needs.
-                </p>
-                <p>Send Me email - <span> developerroyhub@gmail.com</span></p>
-
-                <div class="btn-con">
-                    <a href="https://www.linkedin.com/in/papan-roy-778a94292?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="main-btn">
-                        <span class="btn-text">Contact Me</span>
-                        <span class="btn-icon"><i class="fas fa-envelope"></i></span>
-                    </a>
-                    <a href="https://www.fiverr.com/s/yvENLWb" class="main-btn">
-                        <span class="btn-text">Fiverr Me</span>
-                        <span class="btn-icon"><i class="fas fa-briefcase"></i></span>
-                    </a>
-                    
-                    
-                </div>
-            </div>
-        </div>
+            <span class="active-nav"></span>
+            <span class="animate" style="--i:2;"></span>
+        </nav>
     </header>
-    <main>
-        <section class="container about" id="about">
-            <div class="main-title">
-                <h2>About <span>me</span><span class="bg-text">my stats</span></h2>
+
+    <!-- home section design -->
+    <section class="home show-animate" id="home">
+        <div class="home-content">
+            <h1>Hi, I'm <span>Nishat Mahmud</span><span class="animate" style="--i:2;"></span></h1>
+            <div class="text-animate">
+                <h3>Front-End Developer</h3>
+                <span class="animate" style="--i:3;"></span>
             </div>
-            <div class="about-container">
-                <div class="left-about">
-                    <h4>About Me</h4>
-                    <p>
-                        I am a dedicated web developer with over two years of experience in building exceptional web applications. My expertise spans portfolio sites, e-commerce platforms, video calling apps, and dynamic web solutions. <br /> <br /> I am committed to delivering top-notch results and continuously strive for excellence in every project. My work is driven by a passion for creating impactful and user-friendly digital experiences.
-                    </p>
-                    <div class="btn-con">
-                        <a href="https://www.linkedin.com/in/papan-roy-778a94292?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="main-btn">
-                            <span class="btn-text">Contact Me</span>
-                            <span class="btn-icon"><i class="fas fa-envelope"></i></span>
-                        </a>
-                    </div>
-                </div>
-                <div class="right-about">
-                    <div class="about-item">
-                        <div class="abt-text">
-                            <p class="large-text">50+</p>
-                            <p class="small-text">Projects <br /> Completed</p>
-                        </div>
-                    </div>
-                    <div class="about-item">
-                        <div class="abt-text">
-                            <p class="large-text">2+</p>
-                            <p class="small-text">Years of <br /> Experience</p>
-                        </div>
-                    </div>
-                    <div class="about-item">
-                        <div class="abt-text">
-                            <p class="large-text">30+</p>
-                            <p class="small-text">Happy <br /> Clients</p>
-                        </div>
-                    </div>
-                    <div class="about-item">
-                        <div class="abt-text">
-                            <p class="large-text">100+</p>
-                            <p class="small-text">Customer <br /> Reviews</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="about-stats">
-                <h4 class="stat-title">My Skills</h4>
-                <div class="progress-bars">
-                    <div class="progress-bar">
-                        <p class="prog-title">html5</p>
-                        <div class="progress-con">
-                            <p class="prog-text">BEST</p>
-                            <div class="progress">
-                                <span class="css"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="progress-bar">
-                        <p class="prog-title">css3</p>
-                        <div class="progress-con">
-                            <p class="prog-text">BEST</p>
-                            <div class="progress">
-                                <span class="css"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="progress-bar">
-                        <p class="prog-title">javascript</p>
-                        <div class="progress-con">
-                            <p class="prog-text">BEST</p>
-                            <div class="progress">
-                                <span class="css"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="progress-bar">
-                        <p class="prog-title">ReactJS</p>
-                        <div class="progress-con">
-                            <p class="prog-text">BEST</p>
-                            <div class="progress">
-                                <span class="css"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="progress-bar">
-                        <p class="prog-title">Django</p>
-                        <div class="progress-con">
-                            <p class="prog-text">BEST</p>
-                            <div class="progress">
-                                <span class="css"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="progress-bar">
-                        <p class="prog-title">Python</p>
-                        <div class="progress-con">
-                            <p class="prog-text">BEST</p>
-                            <div class="progress">
-                                <span class="css"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="progress-bar">
-                        <p class="prog-title">Flask</p>
-                        <div class="progress-con">
-                            <p class="prog-text">BEST</p>
-                            <div class="progress">
-                                <span class="css"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="progress-bar">
-                        <p class="prog-title">Wordpress</p>
-                        <div class="progress-con">
-                            <p class="prog-text">BEST</p>
-                            <div class="progress">
-                                <span class="css"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="progress-bar">
-                        <p class="prog-title">Mysql</p>
-                        <div class="progress-con">
-                            <p class="prog-text">BEST</p>
-                            <div class="progress">
-                                <span class="css"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="progress-bar">
-                        <p class="prog-title">Postgressql</p>
-                        <div class="progress-con">
-                            <p class="prog-text">Best</p>
-                            <div class="progress">
-                                <span class="css"></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <h4 class="stat-title">My Timeline</h4>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="tl-icon">
-                        <i class="fas fa-briefcase"></i>
-                    </div>
-                    <p class="tl-duration">2022 - present</p>
-                    <h5>Freelance Web Developer<span> - Self-Employed</span></h5>
-                    <p>
-                        Providing top-notch web development services including portfolio sites, e-commerce platforms, and dynamic web applications. Committed to delivering high-quality results and client satisfaction.
-                    </p>
-                </div>
-                <div class="timeline-item">
-                    <div class="tl-icon">
-                        <i class="fas fa-briefcase"></i>
-                    </div>
-                    <p class="tl-duration">2021 - 2022</p>
-                    <h5>Junior Web Developer<span> - Tech Innovations</span></h5>
-                    <p>
-                        Contributed to various web development projects, focusing on front-end development and integrating new features to enhance user experience.
-                    </p>
-                </div>
-                <div class="timeline-item">
-                    <div class="tl-icon">
-                        <i class="fas fa-briefcase"></i>
-                    </div>
-                    <p class="tl-duration">2019 - 2021</p>
-                    <h5>Software Developer Intern<span> - Web Solutions Inc.</span></h5>
-                    <p>
-                        Assisted in developing and maintaining web applications, gaining valuable experience in coding and problem-solving within a professional environment.
-                    </p>
-                </div>
-                <div class="timeline-item">
-                    <div class="tl-icon">
-                        <i class="fas fa-briefcase"></i>
-                    </div>
-                    <p class="tl-duration">2015 - 2019</p>
-                    <h5>Computer Science Degree<span> - XYZ University</span></h5>
-                    <p>
-                        Earned a degree in Computer Science, focusing on web development, programming languages, and software engineering principles.
-                    </p>
-                </div>
-               
-            </div>
-            
-        </section>
-        <section class="container" id="portfolio">
-            <div class="main-title">
-                <h2>My <span>Portfolio</span><span class="bg-text">My Work</span></h2>
-            </div>
-            <p class="port-text">
-                Here is some of my work that I've done in various programming languages.
+            <p>I am a dedicated, self-assured, and eager learner who is constantly looking for opportunities to pick up
+                the new abilities.
+                I particularly want to put my knowledge and experience in Graphic Design, Web Development, and Android
+                Development to use.
+                To the best of my knowledge, avidly seeks to serve a professional organization with sincere devotion,
+                diligence, and commitment.
+                I have five years of experience managing a YouTube channel, therefore I also have knowledge with video
+                editing.
+                <span class="animate" style="--i:4;"></span>
             </p>
-            <div class="portfolios">
-                <div class="portfolio-item">
-                    <div class="image">
-                        <img src="img/1.png" alt="">
-                    </div>
-                    <div class="hover-items">
-                        <h3>Full-Stacl E-commerce Website </h3>
-                        <div class="icons">
-                            <a href="https://github.com/erenroy" class="icon">
-                                <i class="fab fa-github"></i>
-                            </a>
-                            <a href="https://www.linkedin.com/in/papan-roy-778a94292?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="icon">
-                                <i class="fab fa-linkedin"></i>
-                            </a>
-                            <a href="http://t.me/developerroy" class="icon">
-                                <i class="fas fa-briefcase"></i>
-                            </a>
-                            
-                        </div>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <div class="image">
-                        <img src="img/2.png" alt="">
-                    </div>
-                    <div class="hover-items">
-                        <h3>Movie streaming Webapp</h3>
-                        <div class="icons">
-                            <a href="https://github.com/erenroy" class="icon">
-                                <i class="fab fa-github"></i>
-                            </a>
-                            <a href="https://www.linkedin.com/in/papan-roy-778a94292?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="icon">
-                                <i class="fab fa-linkedin"></i>
-                            </a>
-                            <a href="http://t.me/developerroy" class="icon">
-                                <i class="fas fa-briefcase"></i>
-                            </a>
-                            
-                        </div>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <div class="image">
-                        <img src="img/3.jpg" alt="">
-                    </div>
-                    <div class="hover-items">
-                        <h3>Video Calling Webapp</h3>
-                        <div class="icons">
-                            <a href="https://github.com/erenroy" class="icon">
-                                <i class="fab fa-github"></i>
-                            </a>
-                            <a href="https://www.linkedin.com/in/papan-roy-778a94292?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="icon">
-                                <i class="fab fa-linkedin"></i>
-                            </a>
-                            <a href="http://t.me/developerroy" class="icon">
-                                <i class="fas fa-briefcase"></i>
-                            </a>
-                            
-                        </div>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <div class="image">
-                        <img src="img/4.png" alt="">
-                    </div>
-                    <div class="hover-items">
-                        <h3>Portfolio Branding</h3>
-                        <div class="icons">
-                            <a href="https://github.com/erenroy" class="icon">
-                                <i class="fab fa-github"></i>
-                            </a>
-                            <a href="https://www.linkedin.com/in/papan-roy-778a94292?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="icon">
-                                <i class="fab fa-linkedin"></i>
-                            </a>
-                            <a href="http://t.me/developerroy" class="icon">
-                                <i class="fas fa-briefcase"></i>
-                            </a>
-                            
-                        </div>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <div class="image">
-                        <img src="img/5.png" alt="">
-                    </div>
-                    <div class="hover-items">
-                        <h3>Portfolio for Degital Marketting Agency</h3>
-                        <div class="icons">
-                            <a href="https://github.com/erenroy" class="icon">
-                                <i class="fab fa-github"></i>
-                            </a>
-                            <a href="https://www.linkedin.com/in/papan-roy-778a94292?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="icon">
-                                <i class="fab fa-linkedin"></i>
-                            </a>
-                            <a href="http://t.me/developerroy" class="icon">
-                                <i class="fas fa-briefcase"></i>
-                            </a>
-                            
-                        </div>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <div class="image">
-                        <img src="img/6.png" alt="">
-                    </div>
-                    <div class="hover-items">
-                        <h3>Modern Gardening Website</h3>
-                        <div class="icons">
-                            <a href="https://github.com/erenroy" class="icon">
-                                <i class="fab fa-github"></i>
-                            </a>
-                            <a href="https://www.linkedin.com/in/papan-roy-778a94292?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="icon">
-                                <i class="fab fa-linkedin"></i>
-                            </a>
-                            <a href="http://t.me/developerroy" class="icon">
-                                <i class="fas fa-briefcase"></i>
-                            </a>
-                            
-                        </div>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <div class="image">
-                        <img src="img/7.png" alt="">
-                    </div>
-                    <div class="hover-items">
-                        <h3>Saas - Millionleads</h3>
-                        <div class="icons">
-                            <a href="https://github.com/erenroy" class="icon">
-                                <i class="fab fa-github"></i>
-                            </a>
-                            <a href="https://www.linkedin.com/in/papan-roy-778a94292?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="icon">
-                                <i class="fab fa-linkedin"></i>
-                            </a>
-                            <a href="http://t.me/developerroy" class="icon">
-                                <i class="fas fa-briefcase"></i>
-                            </a>
-                            
-                        </div>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <div class="image">
-                        <img src="img/8.png" alt="">
-                    </div>
-                    <div class="hover-items">
-                        <h3>Portfolio for Video Editor </h3>
-                        <div class="icons">
-                            <a href="https://github.com/erenroy" class="icon">
-                                <i class="fab fa-github"></i>
-                            </a>
-                            <a href="https://www.linkedin.com/in/papan-roy-778a94292?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="icon">
-                                <i class="fab fa-linkedin"></i>
-                            </a>
-                            <a href="http://t.me/developerroy" class="icon">
-                                <i class="fas fa-briefcase"></i>
-                            </a>
-                            
-                        </div>
-                    </div>
-                </div>
-               
-            </div>
-        </section>
-        <section class="container" id="blogs">
-            <div class="blogs-content">
-                <div class="main-title">
-                    <h2>My <span>Blogs</span><span class="bg-text">My Blogs</span></h2>
-                </div>
-                <div class="blogs">
-                    
-                    <div class="blog">
-                        <img src="img/blog1.png" alt="">
-                        <div class="blog-text">
-                            <h4>
-                                How do I get my first client on fiverr 
-                            </h4>
-                            <p>
-                                Gertting my first client on fiver was tough but I started cold outreaching on fiver and got my first 200 doller client on fiverr . 
-                            </p>
-                        </div>
-                    </div>
-                    <div class="blog">
-                        <img src="img/blog2.jpeg" alt="">
-                        <div class="blog-text">
-                            <h4>
-                                How do you win contest on freelancer ? 
-                            </h4>
-                            <p>
-                              I participated on 6 competetions on freelancer and I won my first competetion on the 3rd of joining freelancer .......
-                            </p>
-                        </div>
-                    </div>
-                    <div class="blog">
-                        <img src="img/blog3.jpg" alt="">
-                        <div class="blog-text">
-                            <h4>
-                               Save yourself from scammers on fiverr . 
-                            </h4>
-                            <p>
-                              Saving yourself from scammers are more important than finding client on fiverr . Follow this steps ....  
-                            </p>
-                        </div>
-                    </div>
-                    
-                </div>
-            </div>
-        </section>
-        <section class="container contact" id="contact">
-            <div class="contact-container">
-                <div class="main-title">
-                    <h2>Contact <span>Me</span><span class="bg-text">Contact</span></h2>
-                </div>
-                <div class="contact-content-con">
-                    <div class="left-contact">
-                        <h4>Contact me here</h4>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                            In, laborum numquam? Quam excepturi perspiciatis quas quasi.
-                        </p>
-                        <div class="contact-info">
-                            <div class="contact-item">
-                                <div class="icon">
-                                    <i class="fas fa-map-marker-alt"></i>
-                                    Asia , India 
-                                </div>
-                                <p>
-                                  
-                                </p>
-                            </div>
-                            <div class="contact-item">
-                                <div class="icon">
-                                    <i class="fas fa-envelope"></i>
-                                    developerroyhub@gmail.com
-                                </div>
-                                <p>
-                                   
-                                </p>
-                            </div> 
-                            <div class="contact-item">
-                                <div class="icon">
-                                    <i class="fas fa-user-graduate"></i>
-                                    Btech CSE
-                                </div>
-                                <p>
-                                   
-                                </p>
-                            </div>
-                            <div class="contact-item">
-                                <div class="icon">
-                                    <i class="fas fa-user-graduate"></i>
-                                    http://t.me/developerroy 
-                                </div>
-                                <p>
-                                   
-                                </p>
-                            </div>
-                            <div class="contact-item">
-                                <div class="icon">
-                                    <i class="fas fa-globe-africa"></i>
-                                    English , Hindi , Bengali
-                                </div>
-                                <p>
-                                 
-                                </p>
-                            </div>
-                        </div>
-                        <div class="contact-icons">
-                            <div class="contact-icon">
-                                <a href="https://www.facebook.com/profile.php?id=61559166032397" target="_blank">
-                                    <i class="fab fa-facebook-f"></i>
-                                </a>
-                                <a href="https://x.com/i/flow/login?redirect_after_login=%2Feren2024m" target="_blank">
-                                    <i class="fab fa-twitter"></i>
-                                </a>
-                                <a href="https://github.com/erenroy" target="_blank">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                                <a href="https://www.instagram.com/devroy_2024/?igsh=YmhoeHJ0MW9vajh2" target="_blank">
-                                    <i class="fab fa-instagram"></i>
-                                </a>
-                                
-                            </div>
-                        </div>
-                    </div>
-                    <div class="right-contact">
-                        <form action="" class="contact-form">
-                            <div class="input-control i-c-2">
-                                <input type="text" required placeholder="YOUR NAME">
-                                <input type="email" required placeholder="YOUR EMAIL">
-                            </div>
-                            <div class="input-control">
-                                <input type="text" required placeholder="ENTER SUBJECT">
-                            </div>
-                            <div class="input-control">
-                                <textarea name="" id="" cols="15" rows="8" placeholder="Message Here..."></textarea>
-                            </div>
-                            <div class="submit-btn">
-                                <a href="https://www.linkedin.com/in/papan-roy-778a94292?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="main-btn">
-                                    <span class="btn-text">Contact Me</span>
-                                    <span class="btn-icon"><i class="fas fa-envelope"></i></span>
-                                </a>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
 
-    <div class="controls">
-        <div class="control active-btn" data-id="home" >
-            <i class="fas fa-home"></i>
+            <div class="btn-box">
+                <a href="#" class="btn">Hire Me</a>
+                <a href="#" class="btn">Let's Talk</a>
+                <span class="animate" style="--i:5;"></span>
+            </div>
         </div>
-        <div class="control" data-id="about">
-            <i class="fas fa-user"></i>
-        </div>
-        <div class="control" data-id="portfolio">
-            <i class="fas fa-briefcase"></i>
-        </div>
-        <div class="control" data-id="blogs">
-            <i class="far fa-newspaper"></i>
-        </div>
-        <div class="control" data-id="contact">
-            <i class="fas fa-envelope-open"></i>
-        </div>
-    </div>
-    <div class="theme-btn">
-        <i class="fas fa-adjust"></i>
-    </div>
-    <script src="app.js"></script>
-    <script>const texts = [
-        "Full-Stack Web Developer",
-        "Full-time Freelancer ",
-        "Wordpress Developer",
-        "Python Developer",
-        "Django Developer"
-    ];
-    const typingTextElement = document.getElementById("typing-text");
-    
-    let textIndex = 0;
-    let charIndex = 0;
-    let currentText = "";
-    let isDeleting = false;
-    
-    function type() {
-        if (!isDeleting && charIndex < texts[textIndex].length) {
-            currentText += texts[textIndex].charAt(charIndex);
-            charIndex++;
-            typingTextElement.textContent = currentText;
-            setTimeout(type, 150); // Adjust typing speed here
-        } else if (isDeleting && charIndex > 0) {
-            currentText = currentText.slice(0, -1);
-            charIndex--;
-            typingTextElement.textContent = currentText;
-            setTimeout(type, 100); // Adjust deleting speed here
-        } else if (charIndex === 0) {
-            isDeleting = false;
-            textIndex = (textIndex + 1) % texts.length;
-            setTimeout(type, 200); // Pause before typing next text
-        } else if (charIndex === texts[textIndex].length) {
-            isDeleting = true;
-            setTimeout(type, 1000); // Pause before deleting
-        }
-    }
-    
-    document.addEventListener("DOMContentLoaded", () => {
-        setTimeout(type, 500);
-    });
 
-    // Adding code for pop up ------------------------------------------------------------------------------------------------------
-            // Show the popup after 1 second
-            setTimeout(function() {
-                document.getElementById('popupOverlay').classList.add('show');
-            }, 1000);
-    
-            // Close the popup
-            document.getElementById('popupClose').addEventListener('click', function() {
-                document.getElementById('popupOverlay').classList.remove('show');
-            });
-    
-            // Optional: Close the popup if clicking outside of it
-            document.getElementById('popupOverlay').addEventListener('click', function(e) {
-                if (e.target === this) {
-                    document.getElementById('popupOverlay').classList.remove('show');
-                }
-            });
-        </script>
+        <div class="home-sci">
+            <a href="#"><i class='bx bxl-facebook'></i></a>
+            <a href="#"><i class='bx bxl-twitter'></i></a>
+            <a href="#"><i class='bx bxl-linkedin'></i></a>
+            <span class="animate" style="--i:6;"></span>
+        </div>
+
+        <div class="home-imgHover"></div>
+        <span class="animate home-img" style="--i:7;"></span>
+    </section>
+
+    <!-- about section design -->
+    <section class="about" id="about">
+        <h2 class="heading">About <span>Me</span><span class="animate scroll" style="--i:1;"></span></h2>
+
+        <div class="about-img">
+            <img src="images/about.jpg" alt="">
+            <span class="circle-spin"></span>
+            <span class="animate scroll" style="--i:2;"></span>
+        </div>
+
+        <div class="about-content">
+            <h3>Hi there! Glad to see you here.<span class="animate scroll" style="--i:3;"></span></h3>
+            <p>Hello! Nishat Mahmud here. A technology fanatic!<br>
+                Currently, I am enrolled in the Department of
+                Computer Science and Engineering at Jagannath
+                University in Dhaka. My early education was
+                completed from Mymensingh Zilla School and Govt.
+                Ananda Mohon College in Mymensingh.
+                <span class="animate scroll" style="--i:4;"></span>
+            </p>
+
+            <div class="btn-box btns">
+                <a href="#contact" class="btn">Contact Me</a>
+                <span class="animate scroll" style="--i:5;"></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- education section design -->
+    <section class="education" id="education">
+        <h2 class="heading">My <span>Journey</span><span class="animate scroll" style="--i:1;"></span></h2>
+
+        <div class="education-row">
+            <div class="education-column">
+                <h3 class="title">Education<span class="animate scroll" style="--i:2;"></span></h3>
+
+                <div class="education-box">
+                    <div class="education-content">
+                        <div class="content">
+                            <div class="year"><i class='bx bxs-calendar'></i> 2017 - 2018</div>
+                            <h3>Master Degree - University</h3>
+                            <p>Lorem ipsum dolor, sit amet consectetur
+                                adipisicing elit. Blanditiis dolorem harum
+                                dolorum debitis. Magni, iste! Perferendis
+                                laborum reprehenderit dolorum totam.</p>
+                        </div>
+                    </div>
+
+                    <div class="education-content">
+                        <div class="content">
+                            <div class="year"><i class='bx bxs-calendar'></i> 2018 - 2019</div>
+                            <h3>Master Degree - University</h3>
+                            <p>Lorem ipsum dolor, sit amet consectetur
+                                adipisicing elit. Blanditiis dolorem harum
+                                dolorum debitis. Magni, iste! Perferendis
+                                laborum reprehenderit dolorum totam.</p>
+                        </div>
+                    </div>
+
+                    <div class="education-content">
+                        <div class="content">
+                            <div class="year"><i class='bx bxs-calendar'></i> 2019 - 2020</div>
+                            <h3>Master Degree - University</h3>
+                            <p>Lorem ipsum dolor, sit amet consectetur
+                                adipisicing elit. Blanditiis dolorem harum
+                                dolorum debitis. Magni, iste! Perferendis
+                                laborum reprehenderit dolorum totam.</p>
+                        </div>
+                    </div>
+
+                    <span class="animate scroll" style="--i:3;"></span>
+                </div>
+            </div>
+
+            <div class="education-column">
+                <h3 class="title">Experience<span class="animate scroll" style="--i:5;"></span></h3>
+
+                <div class="education-box">
+                    <div class="education-content">
+                        <div class="content">
+                            <div class="year"><i class='bx bxs-calendar'></i> 2017 - 2018</div>
+                            <h3>Web Developer - Company</h3>
+                            <p>Lorem ipsum dolor, sit amet consectetur
+                                adipisicing elit. Blanditiis dolorem harum
+                                dolorum debitis. Magni, iste! Perferendis
+                                laborum reprehenderit dolorum totam.</p>
+                        </div>
+                    </div>
+
+                    <div class="education-content">
+                        <div class="content">
+                            <div class="year"><i class='bx bxs-calendar'></i> 2018 - 2019</div>
+                            <h3>Web Developer - Company</h3>
+                            <p>Lorem ipsum dolor, sit amet consectetur
+                                adipisicing elit. Blanditiis dolorem harum
+                                dolorum debitis. Magni, iste! Perferendis
+                                laborum reprehenderit dolorum totam.</p>
+                        </div>
+                    </div>
+
+                    <div class="education-content">
+                        <div class="content">
+                            <div class="year"><i class='bx bxs-calendar'></i> 2019 - 2020</div>
+                            <h3>Web Developer - Company</h3>
+                            <p>Lorem ipsum dolor, sit amet consectetur
+                                adipisicing elit. Blanditiis dolorem harum
+                                dolorum debitis. Magni, iste! Perferendis
+                                laborum reprehenderit dolorum totam.</p>
+                        </div>
+                    </div>
+
+                    <span class="animate scroll" style="--i:6;"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- skills section design -->
+    <section class="skills" id="skills">
+        <h2 class="heading">My <span>Skills</span><span class="animate scroll" style="--i:1;"></span></h2>
+
+        <div class="skills-row">
+            <div class="skills-column">
+                <h3 class="title">Coding Skills<span class="animate scroll" style="--i:2;"></span></h3>
+
+                <div class="skills-box">
+                    <div class="skills-content">
+                        <div class="progress">
+                            <h3>HTML <span>90%</span></h3>
+                            <div class="bar"><span></span></div>
+                        </div>
+
+                        <div class="progress">
+                            <h3>CSS <span>80%</span></h3>
+                            <div class="bar"><span></span></div>
+                        </div>
+
+                        <div class="progress">
+                            <h3>JavaScript <span>65%</span></h3>
+                            <div class="bar"><span></span></div>
+                        </div>
+
+                        <div class="progress">
+                            <h3>Python <span>75%</span></h3>
+                            <div class="bar"><span></span></div>
+                        </div>
+                    </div>
+
+                    <span class="animate scroll" style="--i:3;"></span>
+                </div>
+            </div>
+
+            <div class="skills-column">
+                <h3 class="title">Professional Skills<span class="animate scroll" style="--i:5;"></span></h3>
+
+                <div class="skills-box">
+                    <div class="skills-content">
+                        <div class="progress">
+                            <h3>Web Design <span>95%</span></h3>
+                            <div class="bar"><span></span></div>
+                        </div>
+
+                        <div class="progress">
+                            <h3>Web Development <span>67%</span></h3>
+                            <div class="bar"><span></span></div>
+                        </div>
+
+                        <div class="progress">
+                            <h3>Graphic Design <span>85%</span></h3>
+                            <div class="bar"><span></span></div>
+                        </div>
+
+                        <div class="progress">
+                            <h3>SEO Marketing <span>60%</span></h3>
+                            <div class="bar"><span></span></div>
+                        </div>
+                    </div>
+
+                    <span class="animate scroll" style="--i:6;"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- contact section design -->
+    <section class="contact" id="contact">
+        <h2 class="heading">Contact <span>Me</span><span class="animate scroll" style="--i:1;"></span></h2>
+
+        <form action="#">
+            <div class="input-box">
+                <div class="input-field">
+                    <input type="text" placeholder="Full Name" required>
+                    <span class="focus"></span>
+                </div>
+                <div class="input-field">
+                    <input type="text" placeholder="Email" required>
+                    <span class="focus"></span>
+                </div>
+
+                <span class="animate scroll" style="--i:3;"></span>
+            </div>
+            <div class="input-box">
+                <div class="input-field">
+                    <input type="number" placeholder="Mobile Number" required>
+                    <span class="focus"></span>
+                </div>
+                <div class="input-field">
+                    <input type="text" placeholder="Email Subject" required>
+                    <span class="focus"></span>
+                </div>
+
+                <span class="animate scroll" style="--i:5;"></span>
+            </div>
+
+            <div class="textarea-field">
+                <textarea name="" id="" cols="30" rows="10" placeholder="Your Message" required></textarea>
+                <span class="focus"></span>
+
+                <span class="animate scroll" style="--i:7;"></span>
+            </div>
+
+            <div class="btn-box btns">
+                <button type="submit" class="btn">Submit</button>
+
+                <span class="animate scroll" style="--i:9;"></span>
+            </div>
+        </form>
+    </section>
+
+    <!-- footer design -->
+    <footer class="footer">
+        <div class="footer-text">
+            <p>Copyright &copy; 2023 | Designed and
+                Maintenance by Nishat Mahmud | All
+                Rights Reserved</p>
+
+            <span class="animate scroll" style="--i:1;"></span>
+        </div>
+
+        <div class="footer-iconTop">
+            <a href="#"><i class='bx bx-up-arrow-alt'></i></a>
+
+            <span class="animate scroll" style="--i:3;"></span>
+        </div>
+    </footer>
+
+
+    <script src="script.js"></script>
 </body>
+
 </html>
